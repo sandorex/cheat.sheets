@@ -42,6 +42,9 @@ class className {
     protected:
 };
 
-// Accessing members
-className v(5, "Hello");                                    // Creates class instance via the constructor 
-std::cout << v.get_a() << " " << v.get_b() << std::endl;    // Prints to console "5 Hello"
+// Function ran on start of the program
+void main() {
+    // Accessing members
+    className v(5, "Hello");                                    // Creates class instance via the constructor 
+    std::cout << v.get_a() << " " << v.get_b() << std::endl;    // Prints to console "5 Hello"
+}
