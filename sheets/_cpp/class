@@ -1,44 +1,47 @@
-// classes are like structs, but everything is by default private. 
+// In classes everything is private by default
+// 'this' is a pointer to class/struct
+// Using 'this->' to access members is optional
 
-// Declaration 
-ObjectName className { 
-    // Sets everything below it to be private. 
+#include <iostream>
+#include <string>
+
+// Class declaration
+class className { 
+    // Sets member visibility to private (only visible to itself and friends)
     private:
-        // Declaration of variables 
+        // Variable declaration without initialization
         int a; 
-        string b;
-    
-        // Implement any private / helper functions below
+        std::string b;
 
     // Sets everything below it to be public.
     public:
         // Constructor
-        structName(new_a, new_b) { 
-            a = new_a; 
-            b = new_b; 
+        className(int a, std::string b)
+            : a(a), // initialize member a with parameter a
+              b(b)  // initialize member b with parameter b
+        {}
+
+        // Basic functions cause C++ doesn't support setters or getters
+        int get_a() { 
+            return this->a; 
         }
 
-        // accessors or getters functions 
-        int getA() { 
-            return a; 
+        std::string get_b() { 
+            return this->b; 
         }
 
-        string getB() { 
-            return b; 
+        void set_a(int a) {
+            this->a = a;
         }
 
-        // mutators or setter functions 
-        void setA(int new_a) {
-            a = new_a;
+        void set_b(std::string b) { 
+            this->b = b; 
         }
 
-        void setB(int new_b) { 
-            b = new_b; 
-        }
-
-        // Implement any public functions below
+    // Sets member visibility to protected (only visible to itself, subclasses and friends)
+    protected:
 };
 
-// Accessing PUBLIC variables 
-ObjectName v = structName(5, "Hello");              // Creates a struct via the constructor 
-std::cout << v.a << " " << v.b << std::endl;        // Prints to console "5 Hello"
+// Accessing members
+className v(5, "Hello");                                    // Creates class instance via the constructor 
+std::cout << v.get_a() << " " << v.get_b() << std::endl;    // Prints to console "5 Hello"
